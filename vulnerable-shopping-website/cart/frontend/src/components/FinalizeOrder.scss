@@ -1,0 +1,91 @@
+.finalize-order-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.button-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.finalize-order-container h2 {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.order-summary,
+.order-details {
+  margin-top: 20px;
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-summary li {
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.order-details label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.order-details input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.place-order-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.place-order-button:hover {
+  background-color: #0056b3;
+}
+
+/* Component isolation issue - global style conflict */
+/*
+button {
+  background-color: red !important;
+  color: white !important;
+}
+*/

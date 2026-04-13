@@ -1,0 +1,58 @@
+.userInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.userInfo h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.userInfo p {
+  margin-bottom: 10px;
+}
+
+.userInfo button {
+  padding: 10px;
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.userInfo button:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+  .userInfoContainer {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .userInfo {
+    max-width: 100%;
+  }
+
+  .userInfo button {
+    padding: 8px;
+  }
+}
