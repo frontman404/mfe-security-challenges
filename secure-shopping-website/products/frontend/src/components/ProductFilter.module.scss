@@ -1,0 +1,21 @@
+.productFilter {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productFilter label {
+  margin-right: 10px;
+}
+
+.productFilter select {
+  padding: 5px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}

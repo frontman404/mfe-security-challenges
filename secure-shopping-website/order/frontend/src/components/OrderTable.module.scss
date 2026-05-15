@@ -1,0 +1,30 @@
+.orderTableWrapper {
+  width: 100%;
+  max-width: 33vw;
+  overflow-x: auto;
+  margin: 0 auto;
+}
+
+.orderTable {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+  max-width: 100%;
+}
+
+.orderTable th,
+.orderTable td {
+  border: 1px solid #e0e0e0;
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.orderTable th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+.orderTable tr:nth-child(even) {
+  background: #fafafa;
+}
